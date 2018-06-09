@@ -30,7 +30,7 @@ def BIRNN(x,weights,biases):
     #[1,0,2]
     x=tf.transpose(x,[1,0,2])
     x=tf.reshape(x,[-1,n_inputs]) # x.shape=[batch_size*n_steps,n_inputs]
-    x=tf.split(x,n_steps)
+    x=tf.split(x,n_steps) ## x变为一个列表，包含28个元素，其中每个元素的shape为（？，28）
 
     # 调用现成的BasicLSTMCell，建立两条完全一样，又独立的LSTM结构
     lstm_qx=tf.contrib.rnn.BasicLSTMCell(n_hidden,forget_bias=1.0)
