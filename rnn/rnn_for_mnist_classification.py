@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
 #功能：实现一个最简单的RNN模型
+#tensorflow 版本：1.4
+#注意有些函数随着tensorflow的版本不一致有轻微的改变
 from tensorflow.examples.tutorials.mnist import  input_data
 import  tensorflow as tf
 import numpy as np
@@ -69,6 +71,7 @@ _state=lstm_ceil.zero_state(batch_size,tf.float32)
 a1=tf.transpose(x,[1,0,2])
 a2=tf.reshape(a1,[-1,n_input])
 a3=tf.matmul(a2,weights['hidden']+biases['hidden'])
+# 注意tf.split()函数，第一个参数为要分割的tensor, n_step是分割的个数，第三个参数为分割的维度
 a4=tf.split(a3,n_step,0)
 
 print('a4:',a4)
