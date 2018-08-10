@@ -76,6 +76,7 @@ a4=tf.split(a3,n_step,0)
 
 print('a4:',a4)
 outputs,state=tf.nn.static_rnn(lstm_ceil,a4,initial_state=_state)
+# # outputs中保存着每个时刻的LSTM block的输出,当处理分类任务时，我们只需要使用最后一个时刻的输出即可
 print (outputs[-1])
 print('state:',state)
 
