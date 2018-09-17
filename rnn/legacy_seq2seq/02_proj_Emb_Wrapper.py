@@ -162,6 +162,8 @@ dec_ouputs=[]
 dec_predictions=[]
 with tf.variable_scope('decoder') as scope:
     dec_cell=tf.nn.rnn_cell.BasicRNNCell(hidden_size)
+    #此类就是在 cell 前 加了一层embedding
+    #通过这个包装器，可以将模型的输入设计为：[batch_size,1],输出为:[ouput,state]
     dec_cell=EmbeddingWrapper(dec_cell,dec_vocab_size+2,dec_emb_size)
     dec_cell=OutputProjectionWrapper(dec_cell,dec_vocab_size+2)
 
