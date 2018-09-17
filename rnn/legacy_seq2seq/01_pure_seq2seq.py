@@ -167,7 +167,7 @@ with tf.variable_scope('encoder'):
 
     enc_cell = tf.nn.rnn_cell.BasicRNNCell(hidden_size)
 
-    # enc_sent_len x batch_size x embedding_size
+    # enc_meb_inputs是个列表，每个元素的shape:  [batch_size, embedding_size]
     enc_outputs, enc_last_state = tf.contrib.rnn.static_rnn(
         cell=enc_cell,
         inputs=enc_emb_inputs,
